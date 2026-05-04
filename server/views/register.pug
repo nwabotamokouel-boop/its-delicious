@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .auth-page
+    .auth-card.reveal
+      .auth-logo IT'S DELICIOUS 🤤
+      h2 Create Account
+      p Join us to start ordering!
+      if error
+        .auth-error ⚠️ #{error}
+      form(action='/register', method='POST')
+        .form-group
+          label Full Name
+          input(type='text', name='name', placeholder='Marie Dupont', required)
+        .form-group
+          label Email
+          input(type='email', name='email', placeholder='your@email.com', required)
+        .form-group
+          label Password
+          input(type='password', name='password', placeholder='••••••••', required)
+        button.btn-primary(type='submit') Create Account
+      .auth-footer
+        p Already have an account? #[a(href='/login') Login here]

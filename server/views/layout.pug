@@ -1,0 +1,100 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title IT'S DELICIOUS 🤤🍰🍪🌮🫶🏼
+    link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;600;700;800&display=swap', rel='stylesheet')
+    link(rel='stylesheet', href='/css/style.css')
+
+  body
+    nav#navbar
+      a.logo(href='/') IT'S DELICIOUS 🤤
+      ul.nav-links#navLinks
+        li: a(href='/#menu') Menu
+        li: a(href='/#about') About
+        li: a(href='/#contact') Contact
+        if user
+          li: a(href='/orders') My Orders
+          li: a(href='/logout') Logout
+        else
+          li: a(href='/login') Login
+          li: a(href='/register') Register
+      button.cart-btn#cartBtn(onclick='openCart()')
+        span 🛒 Cart
+        span.cart-count#cartCount 0
+      .hamburger#hamburger(onclick='toggleMenu()')
+        span
+        span
+        span
+
+    block content
+
+    footer
+      .footer-inner
+        .footer-logo IT'S DELICIOUS 🤤🍰🍪🌮🫶🏼
+        p.footer-tagline Freshly baked. Delivered with love. 🫶🏼
+        .footer-contact
+          span 📞 650 414 214
+          span 📱 694 371 431
+          a(href='https://www.facebook.com/itsdelicious237', target='_blank') 📘 Facebook
+          a(href='https://www.instagram.com/itsdelicious237', target='_blank') 📸 Instagram
+          a(href='https://www.tiktok.com/@itsdelicious237', target='_blank') 🎵 TikTok
+        p.footer-days 📅 Available: Lundi · Mercredi · Samedi
+        p.footer-copy © 2026 IT'S DELICIOUS. All rights reserved.
+
+    //- CART SIDEBAR
+    .cart-overlay#cartOverlay(onclick='closeCart()')
+    .cart-sidebar#cartSidebar
+      .cart-header
+        h3 🛒 Your Cart
+        button.close-cart(onclick='closeCart()') ✕
+      .cart-items#cartItems
+      .cart-footer
+        .cart-total
+          span Total
+          span#cartTotal 0 frs
+        button.checkout-btn(onclick='openCheckout()') Checkout 🍪
+
+    //- ORDER MODAL
+    .modal-overlay#orderModal(onclick='if(event.target===this)closeModal()')
+      .modal#modalInner
+        h3 Place Your Order 🍰
+        p Fill in your details and we'll deliver to you!
+        .form-group
+          label Your Name *
+          input#customerName(type='text', placeholder='e.g. Marie Dupont')
+        .form-group
+          label Phone Number *
+          input#customerPhone(type='tel', placeholder='e.g. 6XX XXX XXX')
+        .form-group
+          label Delivery Address *
+          input#customerAddress(type='text', placeholder='Your neighbourhood / address')
+        .form-group
+          label Notes (optional)
+          textarea#orderNotes(placeholder='Any special requests?')
+        .modal-footer
+          button.btn-cancel(onclick='closeModal()') Cancel
+          button.btn-confirm(onclick='submitOrder()') Confirm Order 🎉
+
+    .toast#toast
+
+    script(src='/js/app.js')
+    script.
+      function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+      }
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+      });
+      window.addEventListener('scroll', () => {
+        document.getElementById('navbar').style.background =
+          window.scrollY > 50 ? 'rgba(26,14,8,0.99)' : 'rgba(26,14,8,0.95)';
+      });
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => observer.observe(el));

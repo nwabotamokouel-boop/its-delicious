@@ -1,0 +1,161 @@
+extends layout
+
+block content
+
+  //- HERO
+  section#home.hero
+    .hero-bg
+    .hero-content.reveal
+      span.hero-tag 🚚 Livraison disponible
+      h1 Homemade with #[span love &amp; flavor] 🫶🏼
+      p Freshly baked cookies, crêpes, pancakes, churros and cakes — made from scratch and delivered straight to your door.
+      .hero-btns
+        a.btn-primary(href='#menu') Order Now 🍪
+        a.btn-outline(href='tel:+237650414214') 📞 Call Us
+
+  //- DELIVERY BANNER
+  .delivery-banner
+    span 🚚 Livraison
+    span.phones 📞 650 414 214 &nbsp;|&nbsp; 694 371 431
+    span 📅 Lundi · Mercredi · Samedi
+
+  //- MENU
+  section#menu.menu-section
+    .section-header.reveal
+      h2 Our #[span Menu] 🍰
+      p Everything is made fresh, with love and the finest ingredients
+      .gold-line
+    .category-tabs.reveal
+      button.cat-tab.active(onclick="filterMenu('all', this)") 🍽️ All
+      button.cat-tab(onclick="filterMenu('cookies', this)") 🍪 Cookies
+      button.cat-tab(onclick="filterMenu('pancakes', this)") 🥞 Pancakes
+      button.cat-tab(onclick="filterMenu('crepes', this)") 🌮 Crêpes
+      button.cat-tab(onclick="filterMenu('churros', this)") 🍩 Churros
+      button.cat-tab(onclick="filterMenu('cakes', this)") 🎂 Cakes
+    .products-grid#productsGrid
+      //- Cookie Original
+      .product-card(data-cat='cookies')
+        img(src='/images/cookie-original.jpg', alt='Original Chocolate Cookie')
+        .product-info
+          .product-category cookies
+          .product-name Original Chocolate Cookie
+          .product-desc Classic homemade chocolate chip cookie, crispy outside, chewy inside.
+          .product-days 📅 Lundi · Mercredi · Samedi
+          .product-footer
+            .product-price 1 000 frs
+            button.add-to-cart(onclick="addToCart('1', 'Original Chocolate Cookie', 1000, '/images/cookie-original.jpg')") +
+
+      //- Cookie Double
+      .product-card(data-cat='cookies')
+        img(src='/images/cookie-double1.jpg', alt='Double Chocolate Cookie')
+        .product-info
+          .product-category cookies
+          .product-name Double Chocolate Cookie
+          .product-desc Rich double chocolate lava cookie with a gooey molten center.
+          .product-days 📅 Lundi · Mercredi · Samedi
+          .product-footer
+            .product-price 2 000 frs
+            button.add-to-cart(onclick="addToCart('2', 'Double Chocolate Cookie', 2000, '/images/cookie-double1.jpg')") +
+
+      //- Pancakes
+      .product-card(data-cat='pancakes')
+        img(src='/images/pancakes1.jpg', alt='Pancakes')
+        .product-info
+          .product-category pancakes
+          .product-name Pancakes
+          .product-desc Fluffy, golden pancakes made fresh to order. Pure happiness.
+          .product-footer
+            .product-price 1 500 frs
+            button.add-to-cart(onclick="addToCart('3', 'Pancakes', 1500, '/images/pancakes1.jpg')") +
+
+      //- Crêpes Farcies
+      .product-card(data-cat='crepes')
+        img(src='/images/crepe-farcie1.jpg', alt='Crêpes Farcies')
+        .product-info
+          .product-category crêpes
+          .product-name Crêpes Farcies
+          .product-desc Savory stuffed crêpes filled with seasoned ground beef, veggies and melted cheese.
+          .product-footer
+            .product-price 1 500 frs
+            button.add-to-cart(onclick="addToCart('4', 'Crêpes Farcies', 1500, '/images/crepe-farcie1.jpg')") +
+
+      //- Crêpes Nutella
+      .product-card(data-cat='crepes')
+        img(src='/images/crepe-nutella.jpg', alt='Crêpes Nutella')
+        .product-info
+          .product-category crêpes
+          .product-name Crêpes Nutella
+          .product-desc Sweet rolled crêpes drizzled with rich Nutella chocolate.
+          .product-footer
+            .product-price 1 000 frs
+            button.add-to-cart(onclick="addToCart('5', 'Crêpes Nutella', 1000, '/images/crepe-nutella.jpg')") +
+
+      //- Churros
+      .product-card(data-cat='churros')
+        img(src='/images/churros1.jpg', alt='Churros')
+        .product-info
+          .product-category churros
+          .product-name Churros
+          .product-desc Golden crunchy churros with cinnamon sugar and chocolate dipping sauce.
+          .product-footer
+            .product-price 1 500 frs
+            button.add-to-cart(onclick="addToCart('6', 'Churros', 1500, '/images/churros1.jpg')") +
+
+      //- Gâteau
+      .product-card(data-cat='cakes')
+        img(src='/images/cake1.jpg', alt='Gâteau Moelleux')
+        .product-info
+          .product-category cakes
+          .product-name Gâteau Moelleux
+          .product-desc Soft and moist vanilla sponge cake, baked to golden perfection. Whole cake.
+          .product-footer
+            .product-price 5 000 frs
+            button.add-to-cart(onclick="addToCart('7', 'Gâteau Moelleux', 5000, '/images/cake1.jpg')") +
+
+  //- ABOUT
+  section#about.about-section
+    .about-grid
+      .about-text.reveal
+        h2 Made with #[span heart] 🫶🏼
+        .gold-line
+        p Every item on our menu is made fresh by hand — no shortcuts, no preservatives, just pure homemade goodness baked with passion and delivered with care.
+        p We deliver on #[strong Monday, Wednesday and Saturday]. Place your order and we'll confirm your delivery time!
+        .contact-cards
+          .contact-card
+            .icon 📞
+            div
+              .label Call to Order
+              .value 650 414 214
+          .contact-card
+            .icon 📱
+            div
+              .label WhatsApp
+              .value 694 371 431
+          .contact-card
+            .icon 📅
+            div
+              .label Delivery Days
+              .value Lundi · Mercredi · Samedi
+      .about-images.reveal
+        img(src='/images/churros1.jpg', alt='Churros')
+        img(src='/images/cake1.jpg', alt='Cake')
+        img(src='/images/crepe-nutella.jpg', alt='Crêpes')
+
+  //- CONTACT
+  section#contact.contact-section
+    .section-header.reveal
+      h2 Get in #[span Touch] 📞
+      p Order by phone or WhatsApp — we're always happy to hear from you!
+      .gold-line
+    .contact-big.reveal
+      a.contact-phone(href='tel:+237650414214') 📞 650 414 214
+      a.contact-phone(href='tel:+237694371431') 📱 694 371 431
+
+  script.
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+      });
+    }

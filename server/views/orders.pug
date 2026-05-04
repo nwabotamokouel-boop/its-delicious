@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .orders-page
+    .orders-header.reveal
+      h2 My Orders 🍪
+      p Here are all your orders, #{user.name}!
+      .gold-line
+    if orders.length === 0
+      .orders-empty.reveal
+        .empty-icon 🛒
+        p You haven't placed any orders yet.
+        a.btn-primary(href='/#menu') Browse Menu
+    else
+      .orders-grid
+        each order in orders
+          .order-card.reveal
+            .order-top
+              .order-id Order ##{order._id.toString().slice(-6).toUpperCase()}
+              .order-status(class=order.status) #{order.status}
+            .order-items
+              each item in order.items
+                .order-item
+                  span #{item.name} × #{item.quantity}
+                  span #{(item.price * item.quantity).toLocaleString()} frs
+            .order-footer
+              .order-total Total: #[strong #{order.totalAmount.toLocaleString()} frs]
+              .order-date #{new Date(order.createdAt).toLocaleDateString('fr-FR')}
