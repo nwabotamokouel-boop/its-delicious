@@ -167,8 +167,8 @@ nav {
   background: var(--brown-mid);
   border-top: 1px solid var(--brown-warm);
   border-bottom: 1px solid var(--brown-warm);
-  padding: 1rem 80px;
-  display: flex; align-items: center; justify-content: center; gap: 3rem;
+  padding: 1rem 40px;
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
   flex-wrap: wrap;
 }
 
